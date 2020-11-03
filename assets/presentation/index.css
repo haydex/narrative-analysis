@@ -45,8 +45,8 @@
     --radius25: 25px;
     --radius1000: 1000px;
 
-    --interface: url(../interface/interface.svg);
-    --cursor: url(../interface/cursor.svg);
+    --interface: url(/narrative-analysis/assets/interface/interface.svg);
+    --cursor: url(/narrative-analysis/assets/interface/cursor.svg);
     
 }
 
