@@ -29,6 +29,9 @@
         <title>Narrative Analysis - Btracker</title>
         
         <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/youtubetracker-apple-touch-favicon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/youtubetracker-favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/youtubetracker-favicon-16x16.png">
 
         <!-- Presentation -->
         <link rel="stylesheet" href="assets/presentation/index.css"/>
@@ -48,9 +51,12 @@
         <!-- Narrative Tree -->
         <ul id="narrativeTree">
             <li class="level">
-                <div class="keyword">
-                    <div class="collapseIcon"></div>
-                    <p class="text">US Forces, Elections, Government, National Security, Housing, Global Warming</p>
+                <div id="keywordWrapper" class="">
+                    <button id="radioButton"></button>
+                    <div class="keyword group">
+                        <div class="collapseIcon"></div>
+                        <p class="text">US Forces, Elections, Government, National Security, Housing, Global Warming</p>
+                    </div>
                 </div>
                 <ul class="narratives">
                     <li class="narrative">
@@ -344,9 +350,12 @@
                 </ul>
             </li>
             <li class="level uncollapse">
-                <div class="keyword">
-                    <div class="collapseIcon"></div>
-                    <p class="text">COVID-19</p>
+                <div id="keywordWrapper" class="">
+                    <button id="radioButton"></button>
+                    <div class="keyword">
+                        <div class="collapseIcon"></div>
+                        <p class="text">COVID-19</p>
+                    </div>
                 </div>
                 <ul class="narratives">
                     <li class="narrative">
@@ -743,9 +752,12 @@
                 </ul>
             </li>
             <li class="level">
-                <div class="keyword">
-                    <div class="collapseIcon"></div>
-                    <p class="text">Chinese Government</p>
+                <div id="keywordWrapper" class="">
+                    <button id="radioButton"></button>
+                    <div class="keyword">
+                        <div class="collapseIcon"></div>
+                        <p class="text">Chinese Government</p>
+                    </div>
                 </div>
                 <ul class="narratives">
                     <li class="narrative">
@@ -1327,9 +1339,12 @@
                 </ul>
             </li>
             <li class="level">
-                <div class="keyword">
-                    <div class="collapseIcon"></div>
-                    <p class="text">Stock Market</p>
+                <div id="keywordWrapper" class="">
+                    <button id="radioButton"></button>
+                    <div class="keyword">
+                        <div class="collapseIcon"></div>
+                        <p class="text">Stock Market</p>
+                    </div>
                 </div>
                 <ul class="narratives">
                     <li class="narrative">
@@ -1623,9 +1638,12 @@
                 </ul>
             </li>
             <li class="level">
-                <div class="keyword">
-                    <div class="collapseIcon"></div>
-                    <p class="text">Banks</p>
+                <div id="keywordWrapper" class="">
+                    <button id="radioButton"></button>
+                    <div class="keyword">
+                        <div class="collapseIcon"></div>
+                        <p class="text">Banks</p>
+                    </div>
                 </div>
                 <ul class="narratives">
                     <li class="narrative last">
@@ -1779,7 +1797,7 @@
         <!-- Notifications -->
         <section id="notifications">
             <p id="notificationsWrapper">
-                <span id="label">Click a narrative to show its posts.</span>
+                <span id="label">Select Keywords to Merge.</span>
             </p>
         </section>
 

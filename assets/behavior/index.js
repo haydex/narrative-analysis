@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             this.body = document.querySelector("body");
             this.keywords = document.querySelectorAll("ul#narrativeTree li.level div.keyword");
+            this.radioButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#radioButton");
             this.narrativesList = document.querySelectorAll("ul#narrativeTree li.level ul.narratives");
             this.narratives = document.querySelectorAll("ul#narrativeTree li.level ul.narratives li.narrative");
             this.posts = document.querySelectorAll("ul#narrativeTree li.level ul.narratives li.narrative div.posts div.post");
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.hiddenClass = "hidden";
             this.lastClass = "last";
             this.editingClass = "editing";
+            this.selectedClass = "selected";
             this.previousContent = "";
 
             this.freezeDocumentScrollingClass = "freeze";
@@ -70,6 +72,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 this.keywords[i].addEventListener("click", this.keywordsClickListener.bind(this));
 
             }
+
+            for (let i = 0; i < this.radioButtons.length; i++) {
+
+                this.radioButtons[i].addEventListener("click", this.radioButtonsClickListener.bind(this));
+
+            }
+
 
             for (let i = 0; i < this.narratives.length; i++) {
 
@@ -102,9 +111,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
 
-        keywordsClickListener() {
+        keywordsClickListener(event) {
 
-            event.currentTarget.parentNode.classList.toggle(this.uncollapseClass);
+            event.currentTarget.parentNode.parentNode.classList.toggle(this.uncollapseClass);
+
+        }
+
+        radioButtonsClickListener(event) {
+
+            event.currentTarget.parentNode.classList.toggle(this.selectedClass);
 
         }
 
