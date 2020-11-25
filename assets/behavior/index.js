@@ -152,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (event.target.classList.contains(this.narrativeText) && !(event.currentTarget.classList.contains(this.editingClass))) {
                 event.currentTarget.classList.toggle(this.openClass);
-                if (this.bottomMessage) this.bottomMessage.remove();
             }
 
         }

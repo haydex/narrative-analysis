@@ -193,6 +193,32 @@ ul#narrativeTree li.level div#keywordWrapper {
 
 }
 
+ul#narrativeTree li.level div#keywordWrapper button#ungroupButton {
+
+    visibility: hidden;
+    opacity: 0.5;
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;
+    background-image: var(--interface);
+    background-position: -97px -1037px;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+}
+
+ul#narrativeTree li.level div#keywordWrapper.group button#ungroupButton {
+
+    visibility: visible;
+
+}
+
+ul#narrativeTree li.level div#keywordWrapper.group button#ungroupButton:hover {
+
+    opacity: 1;
+
+}
+
 ul#narrativeTree li.level div#keywordWrapper button#radioButton {
 
     width: 18px;
@@ -235,9 +261,9 @@ ul#narrativeTree li.level div.keyword {
 
 }
 
-ul#narrativeTree li.level div.keyword.group {
+ul#narrativeTree li.level div.keyword {
 
-    border: 2px dashed var(--blueishLighter);
+    /* border: 2px dashed var(--blueishLighter); */
 
 }
 
@@ -245,6 +271,12 @@ ul#narrativeTree li.level div#keywordWrapper.selected div.keyword {
 
     background-color: var(--greenish);
     color: var(--whitish);
+
+}
+
+ul#narrativeTree li.level div#keywordWrapper.selected div.keyword:hover {
+
+    background-color: var(--greenish);
 
 }
 
@@ -481,12 +513,13 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#
     background-image: var(--interface);
     margin-bottom: 5px;
     background-position: -105px -960px;
+    opacity: 0.5;
 
 }
 
 ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#editControls button.editButtons:hover {
 
-    opacity: 0.5;
+    opacity: 1;
 
 }
 
@@ -684,18 +717,44 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.
 
 section#notifications {
 
-    display: flex;
-    width: 100%;
-    justify-content: center;
     position: fixed;
     bottom: 0px;
     background-color: var(--greenish);
     color: var(--whitish);
     text-align: center;
-    
-    padding-top: 5px;
-    padding-bottom: 5px;
+    border-radius: var(--radius15);
+    left: 50%;
+    transform: translate(-50%);
+    margin: 10px 0px;
+    padding: 10px 60px;
     z-index: 10;
+    animation-duration: 4s;
+
+}
+
+section#notifications button#closeButton {
+
+    position: absolute;
+    top: 50%;
+    transform-origin: center center;
+    transform: translate( 0, -50%) scale(0.8);
+    right: 10px;
+    width: 17px;
+    height: 17px;
+    background-image: var(--interface);
+    background-position: -268px -958px;
+    
+}
+
+section#notifications button#closeButton:hover {
+
+    opacity: 0.5;
+    
+}
+
+section#notifications div#mergeMessage {
+
+    display: none;
 
 }
 
