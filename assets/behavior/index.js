@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
         radioButtonsClickListener(event) {
 
             event.currentTarget.parentNode.classList.toggle(this.selectedClass);
+            this.bottomMessage.classList.add(this.displayedClass);
 
         }
 

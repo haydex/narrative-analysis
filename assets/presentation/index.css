@@ -718,7 +718,7 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.
 section#notifications {
 
     position: fixed;
-    bottom: 0px;
+    bottom: -100px;
     background-color: var(--greenish);
     color: var(--whitish);
     text-align: center;
@@ -728,7 +728,13 @@ section#notifications {
     margin: 10px 0px;
     padding: 10px 60px;
     z-index: 10;
-    animation-duration: 4s;
+    transition: bottom 0.3s;
+
+}
+
+section#notifications.displayed {
+
+    bottom: 0px;
 
 }
 
