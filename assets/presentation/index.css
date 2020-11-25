@@ -718,11 +718,11 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.
 section#notifications {
 
     position: fixed;
-    bottom: -100px;
-    background-color: var(--greenish);
+    bottom: -200px;
+    background-color: var(--blue);
     color: var(--whitish);
     text-align: center;
-    border-radius: var(--radius15);
+    border-radius: var(--radius25);
     left: 50%;
     transform: translate(-50%);
     margin: 10px 0px;
