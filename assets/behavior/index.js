@@ -133,6 +133,18 @@ document.addEventListener("DOMContentLoaded", function() {
             this.keywords = document.querySelectorAll("ul#narrativeTree li.level div.keyword");
             this.notificationsCounter.textContent = this.selectionCounter;
 
+            if (this.selectionCounter > 1) {
+                
+                this.notificationsMergeButton.classList.add(this.enabledClass);
+                this.notificationsMergeButton.disabled = false;
+
+            } else {
+
+                this.notificationsMergeButton.classList.remove(this.enabledClass);
+                this.notificationsMergeButton.disabled = true;
+
+            }
+
         }
 
         notificationsClickListener(event) {
