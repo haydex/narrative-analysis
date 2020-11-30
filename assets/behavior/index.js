@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.tree = document.querySelector("ul#narrativeTree");
             this.keywords = document.querySelectorAll("ul#narrativeTree li.level div.keyword");
             this.radioButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#radioButton");
+            this.ungroupButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#ungroupButton");
             this.narrativesList = document.querySelectorAll("ul#narrativeTree li.level ul.narratives");
             this.narratives = document.querySelectorAll("ul#narrativeTree li.level ul.narratives li.narrative");
             this.posts = document.querySelectorAll("ul#narrativeTree li.level ul.narratives li.narrative div.posts div.post");
@@ -45,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
             this.narrativeEditButton = "editButton";
             this.narrativeConfirmButton = "confirmButton";
             this.narrativeCancelButton = "cancelButton";
-            this.ungroupButton = "ungroupButton";
 
             this.uncollapseClass = "uncollapse";
             this.openClass = "open";
@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.closeButton = "closeButton";
             this.previousContent = "";
             this.enabledClass = "enabled";
+            this.groupClass = "group";
             this.selectionCounter = 0;
 
             this.freezeDocumentScrollingClass = "freeze";
@@ -68,7 +69,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         initialize() {
 
-            
+            for (let i = 0; i < this.ungroupButtons.length; i++) {
+
+                this.ungroupButtons[i].addEventListener("click", this.ungroupButtonClickListener.bind(this));
+
+            }
 
             for (let i = 0; i < this.moreButton.length; i++) {
 
@@ -105,6 +110,28 @@ document.addEventListener("DOMContentLoaded", function() {
             this.moreInfoModalShadow.addEventListener("click", this.moreInfoModalShadowClickListener.bind(this));
             this.notifications.addEventListener("click", this.notificationsClickListener.bind(this));
             document.addEventListener("keydown", this.escapeKeyListener.bind(this));
+
+        }
+
+        ungroupButtonClickListener(event) {
+
+            let keywords = event.target.previousElementSibling.querySelector("p").textContent.split(', ');
+            
+            event.target.previousElementSibling.querySelector("p").textContent = keywords[0];
+            
+            event.target.parentNode.classList.remove(this.groupClass);
+
+            for (let i=keywords.length-1; i > 0; i--) {
+
+                let node = event.target.parentNode.parentNode.cloneNode(true);
+                node.querySelector("p").textContent = keywords[i];
+                event.target.parentNode.parentNode.after(node);
+                if (event.target.parentNode.classList.contains(this.selectedClass)) this.selectionCounter++;
+
+            }
+
+            this.keywords = document.querySelectorAll("ul#narrativeTree li.level div.keyword");
+            this.notificationsCounter.textContent = this.selectionCounter;
 
         }
 
