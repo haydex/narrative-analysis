@@ -109,7 +109,20 @@ document.addEventListener("DOMContentLoaded", function() {
             this.moreInfoCloseButton.addEventListener("click", this.moreInfoCloseButtonClickListener.bind(this));
             this.moreInfoModalShadow.addEventListener("click", this.moreInfoModalShadowClickListener.bind(this));
             this.notifications.addEventListener("click", this.notificationsClickListener.bind(this));
+            this.notificationsMergeButton.addEventListener("click", this.notificationsMergeButtonClickListener.bind(this));
             document.addEventListener("keydown", this.escapeKeyListener.bind(this));
+
+        }
+
+        notificationsMergeButtonClickListener(event) {
+
+            let keywords = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper.selected");
+            let word = [];
+            for (let i = 0; i < keywords.length; i++) {
+
+                keywords[i].querySelector("p").textContent += ", "
+
+            }
 
         }
 
@@ -125,8 +138,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 let node = event.target.parentNode.parentNode.cloneNode(true);
                 node.querySelector("p").textContent = keywords[i];
+                
                 event.target.parentNode.parentNode.after(node);
+                event.target.parentNode.parentNode.nextSibling.querySelector("div.keyword").addEventListener("click", this.keywordsClickListener.bind(this));
+                event.target.parentNode.parentNode.nextSibling.querySelector("div#keywordWrapper button#radioButton").addEventListener("click", this.radioButtonsClickListener.bind(this));
+                let narratives = event.target.parentNode.parentNode.nextSibling.querySelectorAll("ul.narratives li.narrative");
+                for (let i = 0; i < narratives.length; i++) {
+
+                    narratives[i].addEventListener("click", this.narrativesClickListener.bind(this));
+    
+                }
+                let posts = event.target.parentNode.parentNode.nextSibling.querySelectorAll("ul.narratives li.narrative div.posts div.post");
+                for (let i = 0; i < posts.length; i++) {
+
+                    posts[i].addEventListener("click", this.postsClickListener.bind(this));
+    
+                }
+    
                 if (event.target.parentNode.classList.contains(this.selectedClass)) this.selectionCounter++;
+                
 
             }
 
