@@ -513,13 +513,13 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#
     background-image: var(--interface);
     margin-bottom: 5px;
     background-position: -105px -960px;
-    opacity: 0.5;
+    opacity: 1;
 
 }
 
 ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#editControls button.editButtons:hover {
 
-    opacity: 1;
+    opacity: 0.5;
 
 }
 
@@ -718,17 +718,23 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.
 section#notifications {
 
     position: fixed;
+    width: 100%;
     bottom: -200px;
-    background-color: var(--blue);
+    background-color: var(--greenish);
     color: var(--whitish);
     text-align: center;
-    border-radius: var(--radius25);
-    left: 50%;
-    transform: translate(-50%);
-    margin: 10px 0px;
-    padding: 10px 60px;
+    /*left: 50%;
+    transform: translate(-50%);*/
+    padding: 10px 40px;
     z-index: 10;
     transition: bottom 0.3s;
+
+}
+
+section#notifications p {
+
+    font-size: 16px;
+    padding: 7px 0px;
 
 }
 
@@ -743,10 +749,10 @@ section#notifications button#closeButton {
     position: absolute;
     top: 50%;
     transform-origin: center center;
-    transform: translate( 0, -50%) scale(0.8);
-    right: 10px;
-    width: 17px;
-    height: 17px;
+    transform: translate( 0, -50%) scale(1);
+    right: 20px;
+    width: 18px;
+    height: 18px;
     background-image: var(--interface);
     background-position: -268px -958px;
     
@@ -758,7 +764,39 @@ section#notifications button#closeButton:hover {
     
 }
 
-section#notifications div#mergeMessage {
+section#notifications div#mergeMessage p {
+
+    display: inline-block;
+
+}
+
+section#notifications div#mergeMessage button#mergeButton {
+
+    opacity: 0.5;
+    border: 2px solid var(--whitish);
+    padding: 5px 10px;
+    border-radius: var(--radius25);
+    color: var(--whitish);
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 5px;
+
+}
+
+section#notifications div#mergeMessage button#mergeButton.enabled {
+
+    opacity: 1;
+
+}
+
+section#notifications div#mergeMessage button#mergeButton.enabled:hover {
+
+    background-color: var(--whitish);
+    color: var(--greenish);
+
+}
+
+section#notifications div#selectMessage {
 
     display: none;
 

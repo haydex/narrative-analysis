@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         constructor() {
 
             this.body = document.querySelector("body");
+            this.tree = document.querySelector("ul#narrativeTree");
             this.keywords = document.querySelectorAll("ul#narrativeTree li.level div.keyword");
             this.radioButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#radioButton");
             this.narrativesList = document.querySelectorAll("ul#narrativeTree li.level ul.narratives");
@@ -38,10 +39,13 @@ document.addEventListener("DOMContentLoaded", function() {
             this.moreInfoModalShadow = document.querySelector("section#moreInfoModal div#shadow");
             this.moreInfoModalContent = document.querySelector("section#moreInfoModal div#messageContent");
             this.moreInfoCloseButton = document.querySelector("section#moreInfoModal div#messageBox button#closeButton");
-            this.bottomMessage = document.querySelector("section#notifications");
+            this.notifications = document.querySelector("section#notifications");
+            this.notificationsMergeButton = document.querySelector("section#notifications div#mergeMessage button#mergeButton");
+            this.notificationsCounter = document.querySelector("section#notifications span#counter");
             this.narrativeEditButton = "editButton";
             this.narrativeConfirmButton = "confirmButton";
             this.narrativeCancelButton = "cancelButton";
+            this.ungroupButton = "ungroupButton";
 
             this.uncollapseClass = "uncollapse";
             this.openClass = "open";
@@ -51,7 +55,10 @@ document.addEventListener("DOMContentLoaded", function() {
             this.lastClass = "last";
             this.editingClass = "editing";
             this.selectedClass = "selected";
+            this.closeButton = "closeButton";
             this.previousContent = "";
+            this.enabledClass = "enabled";
+            this.selectionCounter = 0;
 
             this.freezeDocumentScrollingClass = "freeze";
 
@@ -60,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         initialize() {
+
+            
 
             for (let i = 0; i < this.moreButton.length; i++) {
 
@@ -94,7 +103,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
             this.moreInfoCloseButton.addEventListener("click", this.moreInfoCloseButtonClickListener.bind(this));
             this.moreInfoModalShadow.addEventListener("click", this.moreInfoModalShadowClickListener.bind(this));
+            this.notifications.addEventListener("click", this.notificationsClickListener.bind(this));
             document.addEventListener("keydown", this.escapeKeyListener.bind(this));
+
+        }
+
+        notificationsClickListener(event) {
+
+            if (event.target.id == this.closeButton) {
+
+                this.notificationsCloseClickListener();
+
+            }
+
+        }
+
+        notificationsCloseClickListener() {
+
+            this.selectionCounter = 0;
+
+            this.notifications.classList.remove(this.displayedClass);
+
+            for (let i=0; i< this.keywords.length; i++) {
+
+                this.keywords[i].parentNode.classList.remove(this.selectedClass);
+
+            }
 
         }
 
@@ -119,9 +153,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
         radioButtonsClickListener(event) {
 
-            event.currentTarget.parentNode.classList.toggle(this.selectedClass);
-            this.bottomMessage.classList.add(this.displayedClass);
+            if (event.currentTarget.parentNode.classList.contains(this.selectedClass)) {
 
+                this.selectionCounter--;
+
+            } else {
+
+                this.selectionCounter++;
+
+            }
+
+            if (this.selectionCounter > 1) {
+                
+                this.notificationsMergeButton.classList.add(this.enabledClass);
+                this.notificationsMergeButton.disabled = false;
+
+            } else {
+
+                this.notificationsMergeButton.classList.remove(this.enabledClass);
+                this.notificationsMergeButton.disabled = true;
+
+            }
+
+            if (this.selectionCounter < 1) {
+
+                this.notificationsCloseClickListener();
+
+            } else {
+
+                
+                event.currentTarget.parentNode.classList.toggle(this.selectedClass);
+                this.notifications.classList.add(this.displayedClass);
+                this.notificationsCounter.textContent = this.selectionCounter;
+
+            }
+            
         }
 
         narrativesClickListener(event) {
@@ -200,7 +266,15 @@ document.addEventListener("DOMContentLoaded", function() {
         escapeKeyListener() {
 
             if (window.event.keyCode == 27) {
-                this.moreInfoCloseButtonClickListener();
+                if (this.moreInfoModal.classList.contains(this.displayedClass)) {
+
+                    this.moreInfoCloseButtonClickListener();
+
+                } else  {
+
+                    this.notificationsCloseClickListener();
+
+                }
             }
         }
 
