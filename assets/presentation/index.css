@@ -207,7 +207,7 @@ ul#narrativeTree li.level div#keywordWrapper button#ungroupButton {
 
 }
 
-ul#narrativeTree li.level div#keywordWrapper.group button#ungroupButton {
+ul#narrativeTree li.level div#keywordWrapper.group:hover button#ungroupButton {
 
     visibility: visible;
 

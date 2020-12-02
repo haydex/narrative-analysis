@@ -117,12 +117,36 @@ document.addEventListener("DOMContentLoaded", function() {
         notificationsMergeButtonClickListener(event) {
 
             let keywords = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper.selected");
-            let word = [];
+
+            let text = "";
             for (let i = 0; i < keywords.length; i++) {
 
-                keywords[i].querySelector("p").textContent += ", "
+                text = text + keywords[i].querySelector("p").textContent + ", ";
 
             }
+
+            text = text.slice(0, -2);
+
+            keywords[0].querySelector("p").textContent = text;
+            keywords[0].classList.add(this.groupClass);
+            keywords[0].parentNode.classList.remove(this.uncollapseClass);
+
+            for (let i = 1; i < keywords.length; i++) {
+
+                keywords[i].parentNode.remove();
+
+            }
+
+            this.selectionCounter = 1;
+            this.notificationsCounter.textContent = this.selectionCounter;
+            this.notificationsMergeButton.classList.remove(this.enabledClass);
+            this.notificationsMergeButton.disabled = true;
+
+            keywords[0].scrollIntoView({
+                block: "start",
+                behavior: "smooth",
+              });
+
 
         }
 
@@ -131,14 +155,22 @@ document.addEventListener("DOMContentLoaded", function() {
             let keywords = event.target.previousElementSibling.querySelector("p").textContent.split(', ');
             
             event.target.previousElementSibling.querySelector("p").textContent = keywords[0];
-            
+            event.target.parentNode.parentNode.classList.remove(this.uncollapseClass);
             event.target.parentNode.classList.remove(this.groupClass);
+            let node = event.target.parentNode.parentNode.querySelectorAll("ul.narratives li.narrative");
+            for (let i = 0; i < node.length; i++) {
+
+                node[i].classList.remove(this.openClass);
+
+            }
 
             for (let i=keywords.length-1; i > 0; i--) {
 
                 let node = event.target.parentNode.parentNode.cloneNode(true);
+                
                 node.querySelector("p").textContent = keywords[i];
                 
+                node.querySelector("button#ungroupButton").addEventListener("click", this.ungroupButtonClickListener.bind(this));
                 event.target.parentNode.parentNode.after(node);
                 event.target.parentNode.parentNode.nextSibling.querySelector("div.keyword").addEventListener("click", this.keywordsClickListener.bind(this));
                 event.target.parentNode.parentNode.nextSibling.querySelector("div#keywordWrapper button#radioButton").addEventListener("click", this.radioButtonsClickListener.bind(this));
