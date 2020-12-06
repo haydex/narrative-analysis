@@ -257,6 +257,7 @@ ul#narrativeTree li.level div.keyword {
     background-color: var(--yellowish);
     padding: 10px 18px;
     border-radius: var(--radius25);
+    border: 2px solid transparent;
     cursor: pointer;
 
 }
@@ -282,7 +283,19 @@ ul#narrativeTree li.level div#keywordWrapper.selected div.keyword:hover {
 
 ul#narrativeTree li.level div.keyword:hover {
 
+    border: 2px solid var(--blueishLighter);
+
+}
+
+ul#narrativeTree li.level.uncollapse div.keyword {
+
     background-color: var(--blueishLight);
+
+}
+
+ul#narrativeTree li.level.uncollapse div.keyword:hover {
+
+    border: 2px solid var(--blueishLighter);
 
 }
 
