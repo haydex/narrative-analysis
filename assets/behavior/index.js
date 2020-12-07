@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.body = document.querySelector("body");
             this.tree = document.querySelector("ul#narrativeTree");
             this.keywords = document.querySelectorAll("ul#narrativeTree li.level div.keyword");
+            this.collapseIcons = document.querySelectorAll("ul#narrativeTree li.level div#collapseIcon");
             this.radioButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#radioButton");
             this.ungroupButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#ungroupButton");
             this.narrativesList = document.querySelectorAll("ul#narrativeTree li.level ul.narratives");
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.notifications = document.querySelector("section#notifications");
             this.notificationsMergeButton = document.querySelector("section#notifications div#mergeMessage button#mergeButton");
             this.notificationsCounter = document.querySelector("section#notifications span#counter");
+            this.editKeywordsButton = document.querySelector("section#notifications button#editKeywords");
             this.narrativeEditButton = "editButton";
             this.narrativeConfirmButton = "confirmButton";
             this.narrativeCancelButton = "cancelButton";
@@ -60,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.enabledClass = "enabled";
             this.groupClass = "group";
             this.selectionCounter = 0;
+            this.editMode = false;
 
             this.freezeDocumentScrollingClass = "freeze";
 
@@ -68,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         initialize() {
+
+            this.editKeywordsButton.addEventListener("click", this.editKeywordsButtonClickListener.bind(this));
 
             for (let i = 0; i < this.ungroupButtons.length; i++) {
 
@@ -84,6 +89,12 @@ document.addEventListener("DOMContentLoaded", function() {
             for (let i = 0; i < this.keywords.length; i++) {
 
                 this.keywords[i].addEventListener("click", this.keywordsClickListener.bind(this));
+
+            }
+
+            for (let i = 0; i < this.collapseIcons.length; i++) {
+
+                this.collapseIcons[i].addEventListener("click", this.collapseIconsClickListener.bind(this));
 
             }
 
@@ -109,8 +120,22 @@ document.addEventListener("DOMContentLoaded", function() {
             this.moreInfoCloseButton.addEventListener("click", this.moreInfoCloseButtonClickListener.bind(this));
             this.moreInfoModalShadow.addEventListener("click", this.moreInfoModalShadowClickListener.bind(this));
             this.notifications.addEventListener("click", this.notificationsClickListener.bind(this));
-            this.notificationsMergeButton.addEventListener("click", this.notificationsMergeButtonClickListener.bind(this));
+            // this.notificationsMergeButton.addEventListener("click", this.notificationsMergeButtonClickListener.bind(this));
             document.addEventListener("keydown", this.escapeKeyListener.bind(this));
+
+        }
+
+        editKeywordsButtonClickListener(event) {
+
+            this.editMode = true;
+            console.log(this.editMode);
+            this.editKeywordsButton.classList.toggle(this.hiddenClass);
+
+        }
+
+        collapseIconsClickListener(event) {
+
+            event.currentTarget.parentNode.parentNode.parentNode.classList.toggle(this.uncollapseClass);
 
         }
 
@@ -248,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         keywordsClickListener(event) {
 
-            event.currentTarget.parentNode.parentNode.classList.toggle(this.uncollapseClass);
+            event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.toggle(this.uncollapseClass);
 
         }
 

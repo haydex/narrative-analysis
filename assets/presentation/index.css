@@ -46,8 +46,8 @@
     --radius25: 25px;
     --radius1000: 1000px;
 
-    --interface: url(/narrative-analysis/assets/interface/interface.svg);
-    --cursor: url(/narrative-analysis/assets/interface/cursor.svg);
+    --interface: url(/narrative-analysis-v2/assets/interface/interface.svg);
+    --cursor: url(/narrative-analysis-v2/assets/interface/cursor.svg);
     
 }
 
@@ -193,6 +193,12 @@ ul#narrativeTree li.level div#keywordWrapper {
 
 }
 
+ul#narrativeTree li.level div#keywordWrapper div#precisionWrapper {
+
+    display: flex;
+
+}
+
 ul#narrativeTree li.level div#keywordWrapper button#ungroupButton {
 
     visibility: hidden;
@@ -250,7 +256,6 @@ ul#narrativeTree li.level div.keyword {
 
     display: inline-grid;
     grid-template-columns: auto auto;
-    grid-gap: 7px;
     align-items: center;
     font-size: 18px;
     font-weight: 600;
@@ -305,14 +310,46 @@ ul#narrativeTree li.level div.keyword p.text {
 
 }
 
-ul#narrativeTree li.level div.keyword div.collapseIcon {
+ul#narrativeTree li.level div#keywordWrapper div#collapseIcon {
 
-    display: inline-block;
-    margin-right: 2px;
-    width: 14px;
+    margin-right: 5px;
+    width: 9px;
     height: 14px;
     background-image: var(--interface);
-    background-position: -10px -975px;
+    background-position: -20px -826px;
+    align-self: center;
+    transform-origin: center center;
+    transition: transform 0.2s;
+    cursor: pointer;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+}
+
+ul#narrativeTree li.level:not(.uncollapse) div#keywordWrapper div#precisionWrapper:hover div#collapseIcon {
+
+    /* transform: rotate(90deg); */
+    
+
+}
+
+ul#narrativeTree li.level.uncollapse div#keywordWrapper div#precisionWrapper div#collapseIcon {
+
+    transform: rotate(90deg);
+    
+
+}
+
+ul#narrativeTree li.level div#keywordWrapper div#precisionWrapper div#collapseIcon:hover {
+
+    opacity: 0.5;
+
+}
+
+ul#narrativeTree li.level.uncollapse div#keywordWrapper div#precisionWrapper:hover div#collapseIcon {
+
+    /* transform: rotate(-1deg); */
+    
 
 }
 
@@ -363,7 +400,7 @@ ul#narrativeTree li.level ul.narratives li.narrative div.connectorBox {
     position: relative;
     width: 50px;
     height: 100%;
-    margin-left: 25px;
+    margin-left: 15px;
 
 }
 
@@ -730,17 +767,49 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.
 
 section#notifications {
 
+    display: flex;
+    justify-content: center;
+
+}
+
+section#notifications button#editKeywords {
+
     position: fixed;
-    width: 100%;
-    bottom: -200px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    bottom: 30px;
+    border-radius: var(--radius1000);
+    border: 2px solid transparent;
+    background-color: var(--greyishLight);
+    background-image: var(--interface);
+    background-position: -40px -815px;
+    transition: transform 0.1s, bottom 0.5s;
+
+}
+
+section#notifications button#cancelEditing {
+
+    width: 17px;
+    height: 17px;
+    background-image: var(--interface);
+    background-position: -160px -960px;
+
+}
+
+
+
+section#notifications button#editKeywords.hidden {
+
+    background-position-x: -99px;
     background-color: var(--greenish);
-    color: var(--whitish);
-    text-align: center;
-    /*left: 50%;
-    transform: translate(-50%);*/
-    padding: 10px 40px;
-    z-index: 10;
-    transition: bottom 0.3s;
+
+}
+
+section#notifications button#editKeywords:hover {
+
+    border: 2px solid var(--blueishLighter);
+    /* transform: rotate(-45deg); */
 
 }
 

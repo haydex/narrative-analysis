@@ -51,13 +51,15 @@
         <!-- Narrative Tree -->
         <ul id="narrativeTree">
             <li class="level">
-                <div id="keywordWrapper" class="group">
-                    <button id="radioButton" title="Select"></button>
-                    <div class="keyword">
-                        <div class="collapseIcon"></div>
-                        <p class="text">US Forces, Elections, Government, National Security, Housing, Global Warming</p>
+                <div id="keywordWrapper" class="">
+                    <div id="precisionWrapper">
+                        <div id="collapseIcon"></div>
+                        <div id="keywordList">
+                            <div class="keyword">
+                                <p class="text">US Forces</p>
+                            </div>
+                        </div>
                     </div>
-                    <button id="ungroupButton" title="Ungroup Keywords"></button>
                 </div>
                 <ul class="narratives">
                     <li class="narrative">
@@ -352,12 +354,14 @@
             </li>
             <li class="level uncollapse">
                 <div id="keywordWrapper" class="">
-                    <button id="radioButton" title="Select"></button>
-                    <div class="keyword">
-                        <div class="collapseIcon"></div>
-                        <p class="text">COVID-19</p>
+                    <div id="precisionWrapper">
+                        <div id="collapseIcon"></div>
+                        <div id="keywordList">
+                            <div class="keyword">
+                                <p class="text">COVID-19</p>
+                            </div>
+                        </div>
                     </div>
-                    <button id="ungroupButton" title="Ungroup Keywords"></button>
                 </div>
                 <ul class="narratives">
                     <li class="narrative">
@@ -754,13 +758,15 @@
                 </ul>
             </li>
             <li class="level">
-                <div id="keywordWrapper" class="group">
-                    <button id="radioButton" title="Select"></button>
-                    <div class="keyword">
-                        <div class="collapseIcon"></div>
-                        <p class="text">Chinese Government, Hackers</p>
+                <div id="keywordWrapper" class="">
+                    <div id="precisionWrapper">
+                        <div id="collapseIcon"></div>
+                        <div id="keywordList">
+                            <div class="keyword">
+                                <p class="text">Chinese Government</p>
+                            </div>
+                        </div>
                     </div>
-                    <button id="ungroupButton" title="Ungroup Keywords"></button>
                 </div>
                 <ul class="narratives">
                     <li class="narrative">
@@ -1343,12 +1349,14 @@
             </li>
             <li class="level">
                 <div id="keywordWrapper" class="">
-                    <button id="radioButton" title="Select"></button>
-                    <div class="keyword">
-                        <div class="collapseIcon"></div>
-                        <p class="text">Stock Market</p>
+                    <div id="precisionWrapper">
+                        <div id="collapseIcon"></div>
+                        <div id="keywordList">
+                            <div class="keyword">
+                                <p class="text">Stock Market</p>
+                            </div>
+                        </div>
                     </div>
-                    <button id="ungroupButton" title="Ungroup Keywords"></button>
                 </div>
                 <ul class="narratives">
                     <li class="narrative">
@@ -1643,12 +1651,14 @@
             </li>
             <li class="level">
                 <div id="keywordWrapper" class="">
-                    <button id="radioButton" title="Select"></button>
-                    <div class="keyword">
-                        <div class="collapseIcon"></div>
-                        <p class="text">Banks</p>
+                    <div id="precisionWrapper">
+                        <div id="collapseIcon"></div>
+                        <div id="keywordList">
+                            <div class="keyword">
+                                <p class="text">Banks</p>
+                            </div>
+                        </div>
                     </div>
-                    <button id="ungroupButton" title="Ungroup Keywords"></button>
                 </div>
                 <ul class="narratives">
                     <li class="narrative last">
@@ -1801,15 +1811,9 @@
 
         <!-- Notifications -->
         <section id="notifications">
-            <button id="closeButton" title="Cancel Selection"></button>
-            <div id="mergeMessage" class="bottomMessage">
-                <p><span id="counter"></span> Item(s) Selected </p>
-                <button id="mergeButton" title="Merge Selected Items">MERGE</button>
-            </div>
-            <div id="selectMessage" class="bottomMessage">
-                <p><span id="counter">4</span> Item(s) selected</p>
-                <button id="mergeButton">MERGE</button>
-            </div>
+                <button id="editKeywords" title="Edit Keywords"></button>
+                
+            
         </section>
 
         <!-- More Info Modal -->
