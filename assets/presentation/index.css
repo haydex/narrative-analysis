@@ -203,6 +203,43 @@ ul#narrativeTree li.level div#keywordWrapper {
 
 }
 
+ul#narrativeTree li.level div#keywordWrapper.group div#keywordList {
+
+    padding: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border: 2px dashed var(--blueishLighter);
+    border-radius: var(--radius25);
+
+}
+
+ul#narrativeTree li.level div#keywordWrapper.group:hover div#keywordList {
+
+    border-color: var(--blueishDark);
+    cursor: pointer;
+
+}
+
+ul#narrativeTree.editing li.level div#keywordWrapper.group:hover div#keywordList {
+
+    border-color: var(--greenish);
+    background-color: var(--greenishLight);
+
+}
+
+ul#narrativeTree.editing li.level div#keywordWrapper.group div#keywordList.selected {
+
+    border-color: var(--greenish);
+    background-color: var(--greenishLight);
+
+}
+
+ul#narrativeTree:not(.editing) li.level div#keywordWrapper.group:hover div.keyword  {
+
+    border-color: transparent;
+
+}
+
 ul#narrativeTree li.level div#keywordWrapper div#precisionWrapper {
 
     display: flex;
@@ -332,12 +369,6 @@ ul#narrativeTree.editing li.level div.keyword.selected:hover, ul#narrativeTree.e
 
 }
 
-ul#narrativeTree:not(.editing) li.level div#keywordWrapper.group:hover div.keyword  {
-
-    border-color: var(--blueishLighter);
-
-}
-
 
 
 ul#narrativeTree li.level div.keyword {
@@ -385,7 +416,7 @@ ul#narrativeTree li.level div.keyword p.text {
 
 ul#narrativeTree li.level div#keywordWrapper div#collapseIcon {
 
-    margin-right: 5px;
+    margin-right: 10px;
     width: 9px;
     height: 14px;
     background-image: var(--interface);

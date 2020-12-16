@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.body = document.querySelector("body");
             this.tree = document.querySelector("ul#narrativeTree");
             this.keywords = document.querySelectorAll("ul#narrativeTree li.level div.keyword");
+            this.keywordList = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper.group div#keywordList");
             this.collapseIcons = document.querySelectorAll("ul#narrativeTree li.level div#collapseIcon");
             this.radioButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#radioButton");
             this.ungroupButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#ungroupButton");
@@ -73,6 +74,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         initialize() {
 
+            for (let i = 0; i < this.keywordList.length; i++) {
+
+                this.keywordList[i].addEventListener("click", this.keywordListClickListener.bind(this));
+
+            }
+            
             this.editKeywordsButton.addEventListener("click", this.editKeywordsButtonClickListener.bind(this));
 
             for (let i = 0; i < this.ungroupButtons.length; i++) {
@@ -124,6 +131,42 @@ document.addEventListener("DOMContentLoaded", function() {
             // this.notificationsMergeButton.addEventListener("click", this.notificationsMergeButtonClickListener.bind(this));
             document.addEventListener("keydown", this.escapeKeyListener.bind(this));
             this.cancelEditingButton.addEventListener("click", this.editKeywordsButtonClickListener.bind(this));
+
+        }
+
+        keywordListClickListener(event) {
+
+            if (this.editMode) {
+
+                event.currentTarget.classList.toggle(this.selectedClass);
+
+                var keywords = event.currentTarget.querySelectorAll("div.keyword");
+
+                if (event.currentTarget.classList.contains(this.selectedClass)) {
+
+                    for (var i = 0; i < keywords.length; i++) {
+
+                        keywords[i].classList.add(this.selectedClass);
+
+                    }
+
+                } else {
+
+                    for (var i = 0; i < keywords.length; i++) {
+
+                        keywords[i].classList.remove(this.selectedClass);
+
+                    }
+
+                }
+                
+
+            } else {
+
+                event.currentTarget.parentNode.parentNode.parentNode.classList.toggle(this.uncollapseClass);
+
+            }
+            
 
         }
 
@@ -296,6 +339,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         keywordsClickListener(event) {
 
+            event.stopPropagation();
+
             if (this.editMode) {
                 if (event.currentTarget.classList.contains(this.selectedClass)) {
 
@@ -322,9 +367,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     
 
             } else {
-
+                    
                 event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.toggle(this.uncollapseClass);
-
             }
 
         }
