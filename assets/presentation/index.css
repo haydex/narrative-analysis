@@ -28,8 +28,11 @@
     --whitish: white;
     --blueishDark: rgb(23, 57, 76);
     --blueishLighter: rgba(23, 57, 76, 0.3);
+    --blueishLightest: rgba(23, 57, 76, 0.2);
     --greyishLight: #F8F8F8;
     --greenish: #5FAA78;
+    --greenishLight: rgb(247, 255, 247);
+    --greenishDark: rgb(204, 240, 204);
     --blueishLight: rgb(198, 234, 255);
     --yellow: yellow;
     --yellowLight: rgb(255, 255, 223);
@@ -67,6 +70,12 @@ body {
 	background-color:var(--whitish);
     margin: 0px;
     box-sizing: inherit;
+
+}
+
+body.editing {
+
+	background-color:var(--greenishLight);
 
 }
 
@@ -189,6 +198,7 @@ ul#narrativeTree li.level {
 ul#narrativeTree li.level div#keywordWrapper {
 
     display: flex;
+    margin-bottom: -5px;
 
 
 }
@@ -264,8 +274,42 @@ ul#narrativeTree li.level div.keyword {
     border-radius: var(--radius25);
     border: 2px solid transparent;
     cursor: pointer;
+    margin-bottom: 5px;
 
 }
+
+ul#narrativeTree.editing li.level div.keyword {
+
+    background-color: var(--greenishDark);
+
+}
+
+ul#narrativeTree.editing li.level.uncollapse div.keyword {
+
+    background-color: var(--greenishDark);
+
+}
+
+ul#narrativeTree.editing li.level div.keyword:hover, ul#narrativeTree.editing li.level.uncollapse div.keyword:hover {
+
+    border-color: var(--greenish);
+
+}
+
+ul#narrativeTree.editing li.level div.keyword.selected, ul#narrativeTree.editing li.level.uncollapse div.keyword.selected {
+
+    background-color: var(--greenish);
+    color: var(--whitish);
+
+}
+
+ul#narrativeTree.editing li.level div.keyword.selected:hover, ul#narrativeTree.editing li.level.uncollapse div.keyword.selected:hover {
+
+    border-color: var(--blueishLighter);
+
+}
+
+
 
 ul#narrativeTree li.level div.keyword {
 
@@ -499,6 +543,17 @@ ul#narrativeTree li.level ul.narratives li.narrative div.middleSection p.narrati
     border-radius: var(--radius5);
     transition: font-size .2s ease;
     cursor: pointer;
+    border: 2px solid transparent;
+
+}
+
+ul#narrativeTree li.level ul.narratives li.narrative.editing div.middleSection p.narrativeText {
+
+    border-bottom-color: var(--blueishLighter);
+    border-radius: 0px;
+    padding-bottom: 5px;
+    cursor: auto;
+
 
 }
 
@@ -684,9 +739,22 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.
 
 }
 
+body.editing ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.posts div.post {
+
+    background-color: var(--greenishDark);
+
+}
+
 ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.posts div.post:hover {
 
     background-color: var(--blueishLight);
+    cursor: var(--cursor) 20 20, auto;
+
+}
+
+body.editing ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.posts div.post:hover {
+
+    background-color: var(--whitish);
     cursor: var(--cursor) 20 20, auto;
 
 }
@@ -785,15 +853,57 @@ section#notifications button#editKeywords {
     background-image: var(--interface);
     background-position: -40px -815px;
     transition: transform 0.1s, bottom 0.5s;
+    box-shadow: 4px 4px 8px var(--blueishLightest);
+
+}
+
+section#notifications button#editKeywords div#counter {
+
+    display: none;
+    position: absolute;
+    right: -8px;
+    top: -10px;
+    padding: 5px 9px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: var(--radius1000);
+    background-color: var(--reddish);
+    color: var(--whitish);
+
+}
+
+section#notifications button#editKeywords div#counter.displayed {
+
+    display: block;
 
 }
 
 section#notifications button#cancelEditing {
 
-    width: 17px;
-    height: 17px;
+    display: none;
+    position: fixed;
+    right: 95px;
+    bottom: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius1000);
+    border: 2px solid transparent;
+    background-color: var(--greyishLight);
     background-image: var(--interface);
-    background-position: -160px -960px;
+    background-position: -159px -815px;
+    box-shadow: 4px 4px 8px var(--blueishLightest);
+
+}
+
+section#notifications button#cancelEditing.editing {
+
+    display: block;
+
+}
+
+section#notifications button#cancelEditing:hover {
+
+    border-color: var(--blueishLighter);
 
 }
 

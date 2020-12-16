@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.notificationsMergeButton = document.querySelector("section#notifications div#mergeMessage button#mergeButton");
             this.notificationsCounter = document.querySelector("section#notifications span#counter");
             this.editKeywordsButton = document.querySelector("section#notifications button#editKeywords");
+            this.cancelEditingButton = document.querySelector("section#notifications button#cancelEditing");
             this.narrativeEditButton = "editButton";
             this.narrativeConfirmButton = "confirmButton";
             this.narrativeCancelButton = "cancelButton";
@@ -122,14 +123,36 @@ document.addEventListener("DOMContentLoaded", function() {
             this.notifications.addEventListener("click", this.notificationsClickListener.bind(this));
             // this.notificationsMergeButton.addEventListener("click", this.notificationsMergeButtonClickListener.bind(this));
             document.addEventListener("keydown", this.escapeKeyListener.bind(this));
+            this.cancelEditingButton.addEventListener("click", this.editKeywordsButtonClickListener.bind(this));
 
         }
 
         editKeywordsButtonClickListener(event) {
 
-            this.editMode = true;
-            console.log(this.editMode);
+            this.selectionCounter = 0;
+
+            if (this.editMode) {
+
+                for (let i = 0; i < this.keywords.length; i++) {
+
+                    this.keywords[i].classList.remove(this.selectedClass);
+                    
+
+                }
+
+
+            } else {
+
+
+
+            }
+
+            this.cancelEditingButton.classList.toggle(this.editingClass);
+            this.editMode = !this.editMode;
             this.editKeywordsButton.classList.toggle(this.hiddenClass);
+            this.tree.classList.toggle(this.editingClass);
+            this.editKeywordsButton.querySelector("div#counter").classList.remove(this.displayedClass);
+            // document.querySelector("body").classList.toggle(this.editingClass);
 
         }
 
@@ -273,7 +296,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
         keywordsClickListener(event) {
 
-            event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.toggle(this.uncollapseClass);
+            if (this.editMode) {
+                if (event.currentTarget.classList.contains(this.selectedClass)) {
+
+                    this.selectionCounter--;
+
+                } else {
+
+                    this.selectionCounter++;
+
+                }
+
+                event.currentTarget.classList.toggle(this.selectedClass);
+                if (this.selectionCounter > 0) {
+
+                    this.editKeywordsButton.querySelector("div#counter").textContent = this.selectionCounter;
+                    this.editKeywordsButton.querySelector("div#counter").classList.add(this.displayedClass);
+
+                } else {
+
+                    this.editKeywordsButton.querySelector("div#counter").classList.remove(this.displayedClass);
+
+                }
+                
+                    
+
+            } else {
+
+                event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.toggle(this.uncollapseClass);
+
+            }
 
         }
 
@@ -398,7 +450,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 } else  {
 
-                    this.notificationsCloseClickListener();
+                    if (this.editMode) {
+                        this.editKeywordsButtonClickListener();
+                    }
+                    
 
                 }
             }
