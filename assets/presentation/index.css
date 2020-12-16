@@ -212,7 +212,7 @@ ul#narrativeTree li.level div#keywordWrapper div#precisionWrapper {
 ul#narrativeTree li.level div#keywordWrapper button#ungroupButton {
 
     visibility: hidden;
-    opacity: 0.5;
+    opacity: 1;
     width: 25px;
     height: 25px;
     margin-left: 4px;
@@ -223,7 +223,7 @@ ul#narrativeTree li.level div#keywordWrapper button#ungroupButton {
 
 }
 
-ul#narrativeTree li.level div#keywordWrapper.group:hover button#ungroupButton {
+ul#narrativeTree.editing li.level div#keywordWrapper.group button#ungroupButton {
 
     visibility: visible;
 
@@ -231,7 +231,7 @@ ul#narrativeTree li.level div#keywordWrapper.group:hover button#ungroupButton {
 
 ul#narrativeTree li.level div#keywordWrapper.group button#ungroupButton:hover {
 
-    opacity: 1;
+    opacity: 0.5;
 
 }
 
@@ -290,6 +290,29 @@ ul#narrativeTree.editing li.level.uncollapse div.keyword {
 
 }
 
+ul#narrativeTree.editing li.level div#keywordWrapper.group div.keyword button#removeKeyword {
+
+    width: 20px;
+    height: 20px;
+    background-image: var(--interface);
+    background-position: -311px -958px;
+    margin-left: 7px;
+    margin-right: -7px;
+
+}
+
+ul#narrativeTree.editing li.level div#keywordWrapper.group div.keyword.selected button#removeKeyword {
+
+    background-position-x: -268px;
+
+}
+
+ul#narrativeTree.editing li.level div#keywordWrapper.group div.keyword button#removeKeyword:hover {
+
+    opacity: 0.5;
+
+}
+
 ul#narrativeTree.editing li.level div.keyword:hover, ul#narrativeTree.editing li.level.uncollapse div.keyword:hover {
 
     border-color: var(--greenish);
@@ -304,6 +327,12 @@ ul#narrativeTree.editing li.level div.keyword.selected, ul#narrativeTree.editing
 }
 
 ul#narrativeTree.editing li.level div.keyword.selected:hover, ul#narrativeTree.editing li.level.uncollapse div.keyword.selected:hover {
+
+    border-color: var(--blueishLighter);
+
+}
+
+ul#narrativeTree:not(.editing) li.level div#keywordWrapper.group:hover div.keyword  {
 
     border-color: var(--blueishLighter);
 
@@ -523,7 +552,7 @@ ul#narrativeTree li.level ul.narratives li.narrative:not(.editing) div.middleSec
 ul#narrativeTree li.level ul.narratives li.narrative div.middleSection div#editWrapper {
 
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 24px;
     grid-gap: 10px;
 
 }
