@@ -11,7 +11,7 @@
 	Description: Tracking Blog's data.
 	Beneficiary: COSMOS
 	
-	Copyright © 1988 - 2020 HAYDEX, All Rights Reserved.
+	Copyright © 1988 - 2021 HAYDEX, All Rights Reserved.
 	
 	
 	
@@ -24,16 +24,19 @@
     /* theme */
 
     --reddish: #fd4444;
-    --yellowish: #FFF474;
+    --yellowish: #fffa56;
+    --highlighter: #d8ff3e;
     --whitish: white;
     --blueishDark: rgb(23, 57, 76);
     --blueishLighter: rgba(23, 57, 76, 0.3);
     --blueishLightest: rgba(23, 57, 76, 0.2);
     --greyishLight: #F8F8F8;
-    --greenish: #5FAA78;
-    --greenishLight: rgb(247, 255, 247);
-    --greenishDark: rgb(204, 240, 204);
-    --blueishLight: rgb(198, 234, 255);
+    --greyishLight2: rgb(234 234 234);
+    --greenish: #41c16c;
+    --greenishLight: #b4ffb45c;
+    --greenishLight2: #eff9f2;
+    --greenishDark: rgb(184 255 184);
+    --blueishLight: rgb(151 244 255);
     --yellow: yellow;
     --yellowLight: rgb(255, 255, 223);
     --blue: rgb(0, 162, 255);
@@ -132,7 +135,9 @@ button {
 
 span.highlighter {
 
-    background-color: var(--blueishLight);
+    background-color: var(--highlighter);
+    font-size: 24px;
+    line-height: 26px;
 
 }
 
@@ -183,7 +188,7 @@ ul#narrativeTree {
 
     max-width: 500px;
     margin: 0px auto;
-    margin-top: 50px;
+    margin-top: 100px;
     padding: 0px 10px;
     padding-bottom: 30px;
 
@@ -191,7 +196,7 @@ ul#narrativeTree {
 
 ul#narrativeTree li.level {
 
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 
 }
 
@@ -223,7 +228,6 @@ ul#narrativeTree li.level div#keywordWrapper.group:hover div#keywordList {
 ul#narrativeTree.editing li.level div#keywordWrapper.group:hover div#keywordList {
 
     border-color: var(--greenish);
-    background-color: var(--greenishLight);
 
 }
 
@@ -250,11 +254,12 @@ ul#narrativeTree li.level div#keywordWrapper button#ungroupButton {
 
     visibility: hidden;
     opacity: 1;
-    width: 25px;
-    height: 25px;
-    margin-left: 4px;
+    width: 30px;
+    height: 30px;
+    margin-left: -12px;
+    margin-top: -18px;
     background-image: var(--interface);
-    background-position: -97px -1037px;
+    background-position: -95px -1040px;
     flex-grow: 0;
     flex-shrink: 0;
 
@@ -640,7 +645,7 @@ ul#narrativeTree li.level ul.narratives li.narrative div.middleSection textarea.
 
 ul#narrativeTree li.level ul.narratives li.narrative div.middleSection p.narrativeText:hover {
 
-    background-color: var(--blueishLight);
+    background-color: var(--greyishLight2);
 
 }
 
@@ -664,13 +669,13 @@ ul#narrativeTree li.level ul.narratives li.narrative div.middleSection textarea.
 
 }
 
-ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#editControls {
+ul#narrativeTree li.level ul.narratives li.narrative div.middleSection div#editControls {
 
     margin-left: 0px;    
 
 }
 
-ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#editControls button.editButtons {
+ul#narrativeTree.editing li.level ul.narratives li.narrative div.middleSection div#editControls button.editButtons {
 
     display: block;
     width: 25px;
@@ -682,19 +687,19 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#
 
 }
 
-ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#editControls button.editButtons:hover {
+ul#narrativeTree li.level ul.narratives li.narrative div.middleSection div#editControls button.editButtons:hover {
 
     opacity: 0.5;
 
 }
 
-ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#editControls button#cancelButton {
+ul#narrativeTree li.level ul.narratives li.narrative div.middleSection div#editControls button#cancelButton {
 
     background-position: -156px -957px;
 
 }
 
-ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection div#editControls button#confirmButton {
+ul#narrativeTree li.level ul.narratives li.narrative div.middleSection div#editControls button#confirmButton {
 
     background-position: -200px -955px;
 
@@ -801,13 +806,13 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.
 
 body.editing ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.posts div.post {
 
-    background-color: var(--greenishDark);
+    // background-color: var(--greenishLight2);
 
 }
 
 ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.posts div.post:hover {
 
-    background-color: var(--blueishLight);
+    background-color: var(--greyishLight2);
     cursor: var(--cursor) 20 20, auto;
 
 }
@@ -1232,6 +1237,7 @@ section#moreInfoModal div#messageBox ul#details li#location div#icon {
 section#moreInfoModal div#messageBox p#description {
 
     margin-top: 30px;
+    line-height: 23px;
 
 }
 

@@ -11,7 +11,7 @@
 	Description: Tracking Blog's data.
 	Beneficiary: COSMOS
 	
-	Copyright © 1988 - 2020 HAYDEX, All Rights Reserved.
+	Copyright © 1988 - 2021 HAYDEX, All Rights Reserved.
 	
 	
 	
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.collapseIcons = document.querySelectorAll("ul#narrativeTree li.level div#collapseIcon");
             this.radioButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#radioButton");
             this.ungroupButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#ungroupButton");
+            this.level = document.querySelectorAll("ul#narrativeTree li.level");
             this.narrativesList = document.querySelectorAll("ul#narrativeTree li.level ul.narratives");
             this.narratives = document.querySelectorAll("ul#narrativeTree li.level ul.narratives li.narrative");
             this.posts = document.querySelectorAll("ul#narrativeTree li.level ul.narratives li.narrative div.posts div.post");
@@ -79,8 +80,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 this.keywordList[i].addEventListener("click", this.keywordListClickListener.bind(this));
 
             }
-            
-            this.editKeywordsButton.addEventListener("click", this.editKeywordsButtonClickListener.bind(this));
 
             for (let i = 0; i < this.ungroupButtons.length; i++) {
 
@@ -130,7 +129,59 @@ document.addEventListener("DOMContentLoaded", function() {
             this.notifications.addEventListener("click", this.notificationsClickListener.bind(this));
             // this.notificationsMergeButton.addEventListener("click", this.notificationsMergeButtonClickListener.bind(this));
             document.addEventListener("keydown", this.escapeKeyListener.bind(this));
-            this.cancelEditingButton.addEventListener("click", this.editKeywordsButtonClickListener.bind(this));
+            this.cancelEditingButton.addEventListener("click", this.cancelEditingButtonClickListener.bind(this));
+            this.editKeywordsButton.addEventListener("click", this.editKeywordsButtonClickListener.bind(this));
+
+        }
+
+        editKeywordsButtonClickListener(event) {
+
+            if (!this.editMode) {
+
+                this.cancelEditingButton.classList.toggle(this.editingClass);
+                this.editMode = !this.editMode;
+                this.editKeywordsButton.classList.toggle(this.hiddenClass);
+                this.tree.classList.toggle(this.editingClass);
+                this.editKeywordsButton.querySelector("div#counter").classList.remove(this.displayedClass);
+
+            } else {
+
+                if (this.selectionCounter > 1) {
+
+                    let levelClone = this.tree.lastElementChild.cloneNode(true);
+                    
+                    levelClone.querySelector("div#keywordList").innerHTML = "";
+                    levelClone.querySelector("div#keywordWrapper").classList.add(this.groupClass);
+
+                    this.tree.appendChild(levelClone);
+
+                    let seletedKeywords = this.tree.querySelectorAll("div.keyword.selected");
+
+                    for (let i=0; i < seletedKeywords.length; i++) {
+
+                        this.tree.lastElementChild.querySelector("div#keywordList").appendChild(seletedKeywords[i]);
+
+                    }
+
+                    let selectedKeywords = this.tree.querySelectorAll("div.keyword.selected");
+
+                    for (let i=0; i < seletedKeywords.length; i++) {
+
+                        selectedKeywords[i].classList.remove(this.selectedClass);
+
+                    }
+
+                    this.tree.lastElementChild.scrollIntoView({
+                        block: "start",
+                        behavior: "smooth",
+                      });
+
+                    
+                    this.selectionCounter = 0;
+                    this.updateCounter();
+                    
+                }
+            }
 
         }
 
@@ -146,7 +197,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     for (var i = 0; i < keywords.length; i++) {
 
-                        keywords[i].classList.add(this.selectedClass);
+                        
+                        if (!keywords[i].classList.contains(this.selectedClass)) { 
+                            keywords[i].classList.add(this.selectedClass);
+                            this.selectionCounter++;
+                        }
+                        
 
                     }
 
@@ -155,10 +211,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     for (var i = 0; i < keywords.length; i++) {
 
                         keywords[i].classList.remove(this.selectedClass);
+                        this.selectionCounter--;
 
                     }
 
                 }
+
+                this.updateCounter(this.selectionCounter);
                 
 
             } else {
@@ -170,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
 
-        editKeywordsButtonClickListener(event) {
+        cancelEditingButtonClickListener(event) {
 
             this.selectionCounter = 0;
 
@@ -180,9 +239,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     this.keywords[i].classList.remove(this.selectedClass);
                     
-
+                    if (this.keywords[i].parentNode.classList.contains(this.selectedClass)) this.keywords[i].parentNode.classList.remove(this.selectedClass);
                 }
 
+                let editedNarratives = this.tree.querySelectorAll("li.narrative.editing");
+
+                for (let i=0; i< editedNarratives.length; i++) {
+                    
+                    editedNarratives[i].classList.remove(this.editingClass);
+                    editedNarratives[i].getElementsByClassName(this.narrativeText)[0].setAttribute("contenteditable", "false");
+
+                }
 
             } else {
 
@@ -353,22 +420,33 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
 
                 event.currentTarget.classList.toggle(this.selectedClass);
-                if (this.selectionCounter > 0) {
+                this.updateCounter(this.selectionCounter);
 
-                    this.editKeywordsButton.querySelector("div#counter").textContent = this.selectionCounter;
-                    this.editKeywordsButton.querySelector("div#counter").classList.add(this.displayedClass);
-
+                if (event.currentTarget.parentNode.querySelectorAll("div.keyword.selected").length == event.currentTarget.parentNode.querySelectorAll("div.keyword").length) {
+                    event.currentTarget.parentNode.classList.add(this.selectedClass);
                 } else {
-
-                    this.editKeywordsButton.querySelector("div#counter").classList.remove(this.displayedClass);
-
+                    event.currentTarget.parentNode.classList.remove(this.selectedClass);
                 }
-                
                     
 
             } else {
                     
                 event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.toggle(this.uncollapseClass);
+            }
+
+        }
+
+        updateCounter(selectionCounter) {
+
+            if ( selectionCounter > 0) {
+
+                this.editKeywordsButton.querySelector("div#counter").textContent = this.selectionCounter;
+                this.editKeywordsButton.querySelector("div#counter").classList.add(this.displayedClass);
+
+            } else {
+
+                this.editKeywordsButton.querySelector("div#counter").classList.remove(this.displayedClass);
+
             }
 
         }
@@ -486,21 +564,26 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         escapeKeyListener() {
-
+            console.log("hello");
             if (window.event.keyCode == 27) {
                 if (this.moreInfoModal.classList.contains(this.displayedClass)) {
 
                     this.moreInfoCloseButtonClickListener();
 
                 } else  {
-
                     if (this.editMode) {
-                        this.editKeywordsButtonClickListener();
+                        this.cancelEditingButtonClickListener();
+                        
                     }
                     
 
                 }
+            } else {
+
+                
+
             }
+
         }
 
     }

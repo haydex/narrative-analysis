@@ -13,7 +13,7 @@
 	Description: Tracking Blog's data.
 	Beneficiary: COSMOS
 	
-	Copyright © 1988 - 2020 HAYDEX, All Rights Reserved.
+	Copyright © 1988 - 2021 HAYDEX, All Rights Reserved.
 	
 	
 	
@@ -57,10 +57,13 @@
                         <div id="keywordList">
                             <div class="keyword">
                                 <p class="text">US Forces</p>
+                                <button id="removeKeyword"></button>
                             </div>
                         </div>
+                        <button id="ungroupButton"></button>
                     </div>
                 </div>
+                
                 <ul class="narratives">
                     <li class="narrative">
                         <div class="topSection">
@@ -74,7 +77,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">New york governor andrew cuomo has called for the army corps to increase hospital capacity.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">Arkansas had already said that a number of coronavirus cases had been connected to a church.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">2</span>Posts</p>
                             </div>
                         </div>
@@ -218,7 +228,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">Chinese senior officials alleged without evidence that the us army brought the virus.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">Chinese senior officials alleged without evidence that the us army brought the virus.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">55</span>Posts</p>
                             </div>
                         </div>
@@ -352,15 +369,17 @@
                     </li>
                 </ul>
             </li>
-            <li class="level uncollapse">
+            <li class="level">
                 <div id="keywordWrapper" class="">
                     <div id="precisionWrapper">
                         <div id="collapseIcon"></div>
                         <div id="keywordList">
                             <div class="keyword">
                                 <p class="text">COVID-19</p>
+                                <button id="removeKeyword"></button>
                             </div>
                         </div>
+                        <button id="ungroupButton"></button>
                     </div>
                 </div>
                 <ul class="narratives">
@@ -527,7 +546,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">Conservative senator tom cotton an arkansas embarrassment suggested that the coronavirus was manufactured by the chinese government.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">Conservative senator tom cotton an arkansas embarrassment suggested that the coronavirus was manufactured by the chinese government.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">140</span>Posts</p>
                             </div>
                         </div>
@@ -671,7 +697,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">the coronavirus pandemic are crushing demand for new pipeline projects.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">the coronavirus pandemic are crushing demand for new pipeline projects.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">3</span>Posts</p>
                             </div>
                         </div>
@@ -719,7 +752,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">Last year a mysterious shipment was caught smuggling coronavirus from canada.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">Last year a mysterious shipment was caught smuggling coronavirus from canada.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">1</span>Posts</p>
                             </div>
                         </div>
@@ -791,7 +831,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">Twitter ceo jack dorsey stressed that the chinese government was using the platform.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">Twitter ceo jack dorsey stressed that the chinese government was using the platform.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">9</span>Posts</p>
                             </div>
                         </div>
@@ -935,7 +982,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">The communist chinese government has lied about disease rates.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">The communist chinese government has lied about disease rates.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">12</span>Posts</p>
                             </div>
                         </div>
@@ -1079,7 +1133,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">China affecting delivery of chinese goods to croatia.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">China affecting delivery of chinese goods to croatia.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">81,102,912</span>Posts</p>
                             </div>
                         </div>
@@ -1223,7 +1284,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">Many believe that this young woman was coerced by the communist chinese government.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">Many believe that this young woman was coerced by the communist chinese government.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">3</span>Posts</p>
                             </div>
                         </div>
@@ -1364,8 +1432,10 @@
                         <div id="keywordList">
                             <div class="keyword">
                                 <p class="text">Stock Market</p>
+                                <button id="removeKeyword"></button>
                             </div>
                         </div>
+                        <button id="ungroupButton"></button>
                     </div>
                 </div>
                 <ul class="narratives">
@@ -1381,7 +1451,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">The fed induced stock market bubble hillary clinton.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">The fed induced stock market bubble hillary clinton.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">29</span>Posts</p>
                             </div>
                         </div>
@@ -1525,7 +1602,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">people are panicking over the stock market.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">people are panicking over the stock market.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">400</span>Posts</p>
                             </div>
                         </div>
@@ -1666,8 +1750,10 @@
                         <div id="keywordList">
                             <div class="keyword">
                                 <p class="text">Banks</p>
+                                <button id="removeKeyword"></button>
                             </div>
                         </div>
+                        <button id="ungroupButton"></button>
                     </div>
                 </div>
                 <ul class="narratives">
@@ -1683,7 +1769,14 @@
                                 <div class="dot"></div>
                             </div>
                             <div class="narrativeTextWrapper">
-                                <p class="narrativeText">Government controlled money frees economies from private bankers.</p>
+                                <div id="editWrapper">
+                                    <p class="narrativeText">Government controlled money frees economies from private bankers.</p>
+                                    <div id="editControls">
+                                        <button id="editButton" class="editButtons" title="Edit"></button>
+                                        <button id="cancelButton" class="editButtons" title="Cancel"></button>
+                                        <button id="confirmButton" class="editButtons" title="Confirm"></button>
+                                    </div>
+                                </div>
                                 <p class="counter"><span class="number">583</span>Posts</p>
                             </div>
                         </div>
@@ -1821,8 +1914,8 @@
 
         <!-- Notifications -->
         <section id="notifications">
-                <button id="editKeywords" title="Edit Keywords"><div id="counter">0</div></button>
-                <button id="cancelEditing" title="Cancel Editing"></button>
+                <button id="editKeywords" title="Edit Tree"><div id="counter">0</div></button>
+                <button id="cancelEditing" title="Exit Editing"></button>
             
         </section>
 
