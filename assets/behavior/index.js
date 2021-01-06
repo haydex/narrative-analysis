@@ -159,7 +159,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     for (let i=0; i < seletedKeywords.length; i++) {
 
-                        this.tree.lastElementChild.querySelector("div#keywordList").appendChild(seletedKeywords[i]);
+                        let clone = seletedKeywords[i].cloneNode(true);
+                        clone.classList.remove(this.selectedClass);
+                        this.tree.lastElementChild.querySelector("div#keywordList").appendChild(clone);
 
                     }
 
