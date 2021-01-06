@@ -317,6 +317,7 @@ ul#narrativeTree li.level div.keyword {
     border: 2px solid transparent;
     cursor: pointer;
     margin-bottom: 5px;
+    margin-right: 4px;
 
 }
 
