@@ -376,14 +376,6 @@ ul#narrativeTree.editing li.level div.keyword.selected:hover, ul#narrativeTree.e
 
 }
 
-
-
-ul#narrativeTree li.level div.keyword {
-
-    /* border: 2px dashed var(--blueishLighter); */
-
-}
-
 ul#narrativeTree li.level div#keywordWrapper.selected div.keyword {
 
     background-color: var(--greenish);
@@ -437,13 +429,6 @@ ul#narrativeTree li.level div#keywordWrapper div#collapseIcon {
 
 }
 
-ul#narrativeTree li.level:not(.uncollapse) div#keywordWrapper div#precisionWrapper:hover div#collapseIcon {
-
-    /* transform: rotate(90deg); */
-    
-
-}
-
 ul#narrativeTree li.level.uncollapse div#keywordWrapper div#precisionWrapper div#collapseIcon {
 
     transform: rotate(90deg);
@@ -454,13 +439,6 @@ ul#narrativeTree li.level.uncollapse div#keywordWrapper div#precisionWrapper div
 ul#narrativeTree li.level div#keywordWrapper div#precisionWrapper div#collapseIcon:hover {
 
     opacity: 0.5;
-
-}
-
-ul#narrativeTree li.level.uncollapse div#keywordWrapper div#precisionWrapper:hover div#collapseIcon {
-
-    /* transform: rotate(-1deg); */
-    
 
 }
 
@@ -719,20 +697,6 @@ ul#narrativeTree li.level ul.narratives li.narrative div.middleSection p.counter
 
 }
 
-ul#narrativeTree li.level ul.narratives li.narrative.open div.middleSection p.counter {
-
-    /* background-color: var(--blueishDark);
-    color: var(--whitish); */
-
-}
-
-ul#narrativeTree li.level ul.narratives li.narrative div.middleSection div.narrativeTextWrapper:hover p.counter {
-
-    /* background-color: var(--blueishDark);
-    color: var(--whitish); */
-
-}
-
 ul#narrativeTree li.level ul.narratives li.narrative div.middleSection p.counter span.number {
 
     margin-right: 5px;
@@ -803,12 +767,6 @@ ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.
     background-color: var(--greyishLight);
     border-radius: var(--radius15);
     cursor: pointer;
-
-}
-
-body.editing ul#narrativeTree li.level ul.narratives li.narrative.open div.bottomSection div.posts div.post {
-
-    // background-color: var(--greenishLight2);
 
 }
 
@@ -1114,13 +1072,6 @@ section#moreInfoModal div#messageBox button#closeButton {
     height: 36px;
     background-image: var(--interface);
     background-position: -474px -427px;
-    
-}
-
-section#moreInfoModal div#messageBox button#closeButton:hover {
-
-
-    /* background-position-x: -520px; */
     
 }
 
