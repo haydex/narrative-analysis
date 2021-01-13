@@ -105,13 +105,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             }
 
-            for (let i = 0; i < this.radioButtons.length; i++) {
-
-                this.radioButtons[i].addEventListener("click", this.radioButtonsClickListener.bind(this));
-
-            }
-
-
             for (let i = 0; i < this.narratives.length; i++) {
 
                 this.narratives[i].addEventListener("click", this.narrativesClickListener.bind(this));
@@ -148,10 +141,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 if (this.selectionCounter > 1) {
 
+                    var keywordList = this.tree.querySelectorAll("div#keywordList.selected");
+
+                    for (var i=0; i < keywordList.length; i++) {
+
+                        keywordList[i].classList.remove(this.selectedClass);
+
+                    }
+
                     let levelClone = this.tree.lastElementChild.cloneNode(true);
                     
                     levelClone.querySelector("div#keywordList").innerHTML = "";
                     levelClone.querySelector("div#keywordWrapper").classList.add(this.groupClass);
+                    levelClone.querySelector("div#keywordList").classList.remove("selected");
+                    var narratives = levelClone.querySelectorAll("li.narrative");
+
+                    for (i=0; i < narratives.length; i++) {
+
+                        narratives[i].classList.remove("open");
+                        narratives[i].classList.remove("editing");
+                        narratives[i].querySelector("p.narrativeText").setAttribute("contenteditable", "false");
+                    }
+
+                    levelClone.classList.remove("uncollapse");
 
                     this.tree.appendChild(levelClone);
 
@@ -181,6 +193,30 @@ document.addEventListener("DOMContentLoaded", function() {
                     
                     this.selectionCounter = 0;
                     this.updateCounter();
+
+                    var keywords = this.tree.lastElementChild.querySelectorAll("div.keyword");
+                    this.tree.lastElementChild.querySelector("div#keywordList").addEventListener("click", this.keywordListClickListener.bind(this));
+                    this.tree.lastElementChild.querySelector("div#collapseIcon").addEventListener("click", this.collapseIconsClickListener.bind(this));
+                    for (var i=0; i < keywords.length; i++) {
+
+                        keywords[i].addEventListener("click", this.keywordsClickListener.bind(this));
+
+                    }
+
+                    var narratives = this.tree.lastElementChild.querySelectorAll("li.narrative");
+                    var posts = this.tree.lastElementChild.querySelectorAll("div.post");
+
+                    for (let i = 0; i < narratives.length; i++) {
+
+                        narratives[i].addEventListener("click", this.narrativesClickListener.bind(this));
+        
+                    }
+        
+                    for (let i = 0; i < posts.length; i++) {
+        
+                        posts[i].addEventListener("click", this.postsClickListener.bind(this));
+        
+                    }
                     
                 }
             }
@@ -566,7 +602,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         escapeKeyListener() {
-            console.log("hello");
+
             if (window.event.keyCode == 27) {
                 if (this.moreInfoModal.classList.contains(this.displayedClass)) {
 
