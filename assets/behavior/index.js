@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.collapseIcons = document.querySelectorAll("ul#narrativeTree li.level div#collapseIcon");
             this.radioButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#radioButton");
             this.ungroupButtons = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper button#ungroupButton");
+            this.removeKeyword = document.querySelectorAll("ul#narrativeTree li.level div#keywordWrapper div.keyword button#removeKeyword");
             this.level = document.querySelectorAll("ul#narrativeTree li.level");
             this.narrativesList = document.querySelectorAll("ul#narrativeTree li.level ul.narratives");
             this.narratives = document.querySelectorAll("ul#narrativeTree li.level ul.narratives li.narrative");
@@ -74,6 +75,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         initialize() {
+
+            for (let i = 0; i < this.removeKeyword.length; i++) {
+
+                this.removeKeyword[i].addEventListener("click", this.removeKeywordClickListener.bind(this));
+
+            }
 
             for (let i = 0; i < this.keywordList.length; i++) {
 
@@ -124,6 +131,25 @@ document.addEventListener("DOMContentLoaded", function() {
             document.addEventListener("keydown", this.escapeKeyListener.bind(this));
             this.cancelEditingButton.addEventListener("click", this.cancelEditingButtonClickListener.bind(this));
             this.editKeywordsButton.addEventListener("click", this.editKeywordsButtonClickListener.bind(this));
+
+        }
+
+        removeKeywordClickListener(event) {
+
+            
+            var keywords = event.currentTarget.parentNode.parentNode.querySelectorAll("div.keyword");
+
+            console.log(keywords.length);
+
+            if (keywords.length < 3) {
+
+                
+                event.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.remove("group")
+
+            }
+
+            event.currentTarget.parentNode.remove();
+            
 
         }
 
@@ -197,6 +223,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     var keywords = this.tree.lastElementChild.querySelectorAll("div.keyword");
                     this.tree.lastElementChild.querySelector("div#keywordList").addEventListener("click", this.keywordListClickListener.bind(this));
                     this.tree.lastElementChild.querySelector("div#collapseIcon").addEventListener("click", this.collapseIconsClickListener.bind(this));
+                    var removeKeyword = this.tree.lastElementChild.querySelectorAll("button#removeKeyword");
+
                     for (var i=0; i < keywords.length; i++) {
 
                         keywords[i].addEventListener("click", this.keywordsClickListener.bind(this));
@@ -215,6 +243,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     for (let i = 0; i < posts.length; i++) {
         
                         posts[i].addEventListener("click", this.postsClickListener.bind(this));
+        
+                    }
+
+                    for (let i = 0; i < removeKeyword.length; i++) {
+
+                        removeKeyword[i].addEventListener("click", this.removeKeywordClickListener.bind(this));
         
                     }
                     
